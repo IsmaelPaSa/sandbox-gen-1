@@ -102,7 +102,7 @@ chinese_zodiac = [
 def version():
         print('Quetzal Sandbox Gen 1')
         print('Random Name Generator')
-        print('Version: 1.0')
+        print('Version: 1.2')
         print('Author: Quetzal-Sama')
 
 def randomizer(list):
@@ -111,8 +111,9 @@ def randomizer(list):
         # Select
         name = random.choice(list)
         # Print
+        print(end=' | ')
         for i in name:
-                print(i, end=' ')
+                print(i, end=' | ')
         return name
         
 def main():
@@ -131,6 +132,10 @@ def main():
                 print('  -z, --zodiac         Generate a Chinese zodiac name.')
                 print('  -h, --help           Show this help.')
                 sys.exit()
+        # Check args
+        if len(args) < 2:
+                print('Usage: random_name.py [options], use -h or --help for more information.')
+                sys.exit()
         # Check -c or --constellation
         if '-c' in args or '--constellation' in args:
                 randomizer(constelations)
@@ -142,12 +147,6 @@ def main():
         # Check -z or --zodiac
         if '-z' in args or '--zodiac' in args:
                 randomizer(chinese_zodiac)
-                sys.exit()
-        # Default
-        randomizer(greek_alphabet)
-        # Check args
-        if len(args) < 2:
-                print('Usage: random_name.py [options], use -h or --help for more information.')
                 sys.exit()
 
 main()
